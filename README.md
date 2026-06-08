@@ -13,7 +13,8 @@
      Why is this knowledge valuable, and why is it hard to find through official channels?
      Example: "Student reviews of CS professors at [university] — useful because official
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
-
+My system covers student reviews and experiences of UT Austin's Online Master's programs, specifically the Master of Science in Computer Science Online (MSCSO) and Master of Science in Data Science Online (MSDSO). It focuses on student-generated insights about coursework, workload, instructor quality, program flexibility, difficulty, and career outcomes gathered from Reddit discussions, blogs, and other online communities.
+Official program websites provide information about admissions, degree requirements, and course offerings, but they do not reflect students' real experiences with workload, course difficulty, instructor quality, time commitment, and career outcomes.
 ---
 
 ## Document Sources
@@ -24,16 +25,17 @@
 
 | # | Source | Type | URL or file path |
 |---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | Medium (Blog)| Text Blog| https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6|
+
+| 2 | Student Personal Blog | Text Blog| https://modalshift.co/msdso-review/|
+| 3 | Student Personal Blog | Text Blog | https://921kiyo.com/ut-austin-cs-online/ |
+| 4 | Reddit - r/MSCSO | Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1t15ncr/ut_austin_msds_with_a_fulltime_job/ |
+| 5 | Reddit - r/MSCSO  | Text Reddit | https://www.reddit.com/r/MSCSO/comments/1ttz0oq/if_you_fail_a_course_or_final_exam_do_you_have_to/|
+| 6 | Reddit - r/MSCSO |Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/ |
+| 7 | Reddit - r/MSCSO | Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1ss1oed/questions_about_newly_admitted_candidate_to_ut/ |
+| 8 | Reddit - r/MSCSO  | Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1shxv1i/retaking_course_opinions/ |
+| 9 | Reddit - r/MSCSO |  Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/|
+| 10 | Reddit - r/MSCSO | Text Reddit  | https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/|
 
 ---
 
@@ -47,12 +49,15 @@
      - What your final chunk count was across all documents -->
 
 **Chunk size:**
-
+I used a chunk size of 500 tokens. This size works well for my project because most documents contain student experiences and opinions that can be captured within a few paragraphs.
 **Overlap:**
-
+Overlap of 100. The overlap helps preserve context when important information spans multiple chunks.
 **Why these choices fit your documents:**
+I will use a chunk size of 500 tokens with an overlap of 100 tokens. This size is large enough to capture complete thoughts about topics such as workload, course quality, and student experiences, while remaining small enough for accurate retrieval.
+Reddit threads will be split into the original post and comments, while blog posts will be chunked by their section headings. The 100-token overlap helps preserve context when information spans multiple chunks.
 
 **Final chunk count:**
+
 
 ---
 
