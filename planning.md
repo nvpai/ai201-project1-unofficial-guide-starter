@@ -87,15 +87,13 @@ If I were deploying this system for real users and cost was not a constraint, I 
      is right or wrong. "What are good dining halls?" is too vague.
      "What do students say about wait times at [dining hall name] during lunch?" is testable. -->
 
-| # | Question | Expected answer |
-|---|----------|-----------------|
-| 1 |  Is it worth  to retake the  course to get digital badge | Some students suggest that digital badges are not important. Get hands on with a project. Retaking a class will not replace the previous grade... it will just average with it. |
-| 2 | So is the MSCSO worth it? or List some pros and cons of doing MSCSO | Pros:The courses offered are almost same as the full-time ones in-terms of content and quality.The final degree certificate you are awarded is the same as the MS on-campus program.
-The exams are online and open for a range of days, providing flexibility. Cons: It can get very hectic unless you efficiently balance your work and studies, Connecting with your fellow classmates is not always smooth since the interaction is entirely virtual.
-The lecture videos are uploaded onto a Web platform (like EdX). So if you are not a video-person, this can get tiring.|
-| 3 | Is it realistic to complete the program in 1.5 years? | Some students report that it is possible, but it depends on prior experience, course load, and personal commitments. Many recommend a slower pace for students working full-time.|
-| 4 | How are courses typically graded and assessed? | Students report that grading often consists of a combination of assignments, projects, exams, and quizzes, with some courses using online exam proctoring. |
-| 5 | Suggest some course which are taken by students of MSCSO/MSDSO?| The course are Deep Learning, Natural Language Processing, Data Structures & Algorithms |
+| # | Question | Expected answer | Grounding source(s) |
+|---|----------|-----------------|---------------------|
+| 1 | If I retake a course I already passed (e.g., to get a higher grade or digital badge), does the new grade replace the old one? | No. Retaking a class does **not** replace the previous grade — it just averages with it. Students also note a single C is fine as long as your GPA stays above 3.0, and that digital badges "do not matter at all" since employers generally don't care what grade you got in a specific course. | `reddit8.txt` (Retaking course opinions) |
+| 2 | How much does the UT Austin online program cost, how many courses are required, and how long do you have to complete it? | The program requires **10 courses** at **$1,000 per course**, totaling **$10,000**. International students pay an additional **$125 per semester** international fee (introduced Fall '21). Students have up to **6 years** to complete the program. (For comparison, the blogs note Georgia Tech's OMSCS costs $540/course, ~$5,400 total.) | `blogMedium.txt`, `personalBlog2.txt` (modalshift), `PersonalBlog.txt` (kiyo) |
+| 3 | What is the typical weekly workload for a single course? | A course's workload is roughly **8 to 20 hours per week** depending on its difficulty. Students give concrete examples — e.g., one reports AOS + DL totaling under 10 hours/week combined, while a coworker found GIOS and DL each took 15–20 hours. To stay under ~20–25 hours/week, students who take two courses usually pair an easy course with a medium one. | `blogMedium.txt`, `reddit6.txt` |
+| 4 | How are courses typically graded and assessed, and are exams proctored? | Grading varies widely by course — usually a mix of assignments/programming, projects, quizzes, and exams (often a midterm and final), with some courses being entirely project-based or homework-only. Exams are a mix of MCQs and descriptive/theory questions; some are proctored and some rely on the honor code. Proctoring also varies: e.g., Deep Learning is unproctored with auto-graded assignments, while Machine Learning is proctored by recording (not live) for exams. No courses use live proctoring or in-person exams. Theory homework/exams can be submitted in LaTeX or handwritten. | `reddit9.txt`, `blogMedium.txt`, `PersonalBlog.txt` |
+| 5 | Which courses do MSCSO/MSDSO students commonly take or recommend? | Frequently mentioned courses include Deep Learning, Natural Language Processing (highly praised, taught by Dr. Durrett), Data Structures & Algorithms, Machine Learning, Reinforcement Learning, Advanced Operating Systems, Parallel Systems, Data Exploration & Visualization, and Probability/Predictive Modeling courses. UT Austin is noted for a strong selection of ML-related courses (ML, RL, DL, Optimization, NLP, Advanced Linear Algebra). | `personalBlog2.txt`, `PersonalBlog.txt`, `blogMedium.txt` |
 
 ---
 
@@ -121,26 +119,42 @@ The lecture videos are uploaded onto a Web platform (like EdX). So if you are no
 ## Architecture
     
 
- The UT Austin Online Master's Guide is a RAG (Retrieval-Augmented Generation) pipeline with four components:
+ The UT Austin Online Master's Guide is a RAG (Retrieval-Augmented Generation) pipeline with five components:
+
+## Architecture
 
 ```text
-User query
+User Query
     │
     ▼
-[1] INGEST          ──► Reddit threads, blog posts, and student reviews
-    ingest.py            are cleaned, chunked, and stored once at startup
+[1] DOCUMENT INGESTION
+    Python 
+    (Load and clean Reddit threads and blog posts)
     │
     ▼
-[2] RETRIEVE        ──► The query is embedded and matched against stored chunks
-    retriever.py         using semantic similarity search in ChromaDB
+[2] CHUNKING
+    LangChain RecursiveCharacterTextSplitter
+    (Structure-aware chunking, 500 tokens, 100 overlap)
     │
     ▼
-[3] GENERATE        ──► Retrieved chunks are passed as context to an LLM,
-    generator.py         which generates a grounded answer with citations
+[3] EMBEDDING + VECTOR STORE
+    all-MiniLM-L6-v2
+    +
+    ChromaDB
+    (Generate embeddings and store vectors)
     │
     ▼
-[4] UI              ──► A Gradio chat interface allows users to ask
-    app.py              questions about the MSCSO and MSDSO programs
+[4] RETRIEVAL
+    ChromaDB Similarity Search
+    (Top-k = 3)
+    │
+    ▼
+[5] GENERATION
+    Groq + llama-3.3-70b-versatile
+    (Generate grounded answers using retrieved chunks)
+    │
+    ▼
+Response with Source Citations
 ```
 
 **Tools Used**
@@ -150,7 +164,7 @@ User query
 * **Embeddings:** `all-MiniLM-L6-v2`
 * **Vector Store:** ChromaDB
 * **Retrieval:** Similarity search (`top-k = 3`)
-* **Generation:** OpenAI GPT model
+* **Generation:** llama-3.3-70b-versatile
 * **UI:** Gradio
 
 
