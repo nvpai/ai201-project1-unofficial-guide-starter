@@ -53,8 +53,7 @@ I used a chunk size of 500 tokens. This size works well for my project because m
 **Overlap:**
 Overlap of 100. The overlap helps preserve context when important information spans multiple chunks.
 **Why these choices fit your documents:**
-I will use a chunk size of 500 tokens with an overlap of 100 tokens. This size is large enough to capture complete thoughts about topics such as workload, course quality, and student experiences, while remaining small enough for accurate retrieval.
-Reddit threads will be split into the original post and comments, while blog posts will be chunked by their section headings. The 100-token overlap helps preserve context when information spans multiple chunks.
+I used a chunk size of 500 tokens with a 100-token overlap. The corpus consists primarily of Reddit discussions, student reviews, and blog posts that contain complete experiences and opinions spanning multiple paragraphs. A 500-token chunk preserves enough context to capture these experiences while remaining focused for retrieval. A 100-token overlap helps retain information that appears near chunk boundaries and prevents the loss of important context.
 
 **Final chunk count:**
 

@@ -46,14 +46,17 @@ Reddit| https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_w
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
 **Chunk size:**
-500
+500 token. Student discussion text is semantically dense — a single review is
+often a paragraph, which fits comfortably in this range. Going smaller
+would fragment individual review; going larger would merge unrelated comments
+into one chunk, making retrieval less precise.
 **Overlap:**
-100
+50 , The overlap helps preserve context when important information spans multiple chunks. Since many chunks are already self contained will be using 50 tokens for overlap
 **Reasoning:**
-I will use a chunk size of 500 tokens with an overlap of 100 tokens. This size is large enough to capture complete thoughts about topics such as workload, course quality, and student experiences, while remaining small enough for accurate retrieval.
-Reddit threads will be split into the original post and comments, while blog posts will be chunked by their section headings. The 100-token overlap helps preserve context when information spans multiple chunks.
+<!-- I will use a chunk size of 500 tokens with an overlap of 100 tokens. This size is large enough to capture complete thoughts about topics such as workload, course quality, and student experiences, while remaining small enough for accurate retrieval. -->
 
-
+I am planning to use structure aware chunking approach. blog posts were split by section hedding , while reddit threads were split into original post and individaul comment, this preserves complete thoughts and student experiences, resulting in more meaningful chunks 
+For longer sections, a maximum chunk size of approximately 500 tokens was used with a 100-token overlap to preserve context.
 ---
 
 ## Retrieval Approach
@@ -65,11 +68,16 @@ Reddit threads will be split into the original post and comments, while blog pos
      support, accuracy on domain-specific text, latency? -->
 
 **Embedding model:**
+`all-MiniLM-L6-v2`
+A lightweight sentence-transformers model that runs locally with no API key or rate limits. It maps text to 384-dimensional vectors and provides good performance on short to medium passages. The tradeoff is slightly lower retrieval accuracy compared to larger commercial models, but it is fast, free, and easy to use for a course project.
+
+
 
 **Top-k:**
+I will use top 3 most relevant chunks for each query, which provides sufficient context while minimizing irrelevant results.
 
 **Production tradeoff reflection:**
-
+If I were deploying this system for real users and cost was not a constraint, I would prioritize retrieval accuracy over model size. Since the corpus consists of English-language student reviews, blogs, and Reddit discussions, multilingual support would be less important than accurately capturing the meaning of long-form student experiences. I would consider larger embedding models such as OpenAI's text-embedding-3-large, which may provide better semantic understanding and retrieval quality. The tradeoff would be higher latency and computational requirements, but these costs could be justified by more accurate and relevant search results.
 ---
 
 ## Evaluation Plan
@@ -81,11 +89,13 @@ Reddit threads will be split into the original post and comments, while blog pos
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 |  Is it worth  to retake the  course to get digital badge | Some students suggest that digital badges are not important. Get hands on with a project. Retaking a class will not replace the previous grade... it will just average with it. |
+| 2 | So is the MSCSO worth it? or List some pros and cons of doing MSCSO | Pros:The courses offered are almost same as the full-time ones in-terms of content and quality.The final degree certificate you are awarded is the same as the MS on-campus program.
+The exams are online and open for a range of days, providing flexibility. Cons: It can get very hectic unless you efficiently balance your work and studies, Connecting with your fellow classmates is not always smooth since the interaction is entirely virtual.
+The lecture videos are uploaded onto a Web platform (like EdX). So if you are not a video-person, this can get tiring.|
+| 3 | Is it realistic to complete the program in 1.5 years? | Some students report that it is possible, but it depends on prior experience, course load, and personal commitments. Many recommend a slower pace for students working full-time.|
+| 4 | How are courses typically graded and assessed? | Students report that grading often consists of a combination of assignments, projects, exams, and quizzes, with some courses using online exam proctoring. |
+| 5 | Suggest some course which are taken by students of MSCSO/MSDSO?| The course are Deep Learning, Natural Language Processing, Data Structures & Algorithms |
 
 ---
 
@@ -108,6 +118,44 @@ Reddit threads will be split into the original post and comments, while blog pos
      Label each stage with the tool or library you're using.
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
+## Architecture
+    
+
+ The UT Austin Online Master's Guide is a RAG (Retrieval-Augmented Generation) pipeline with four components:
+
+```text
+User query
+    │
+    ▼
+[1] INGEST          ──► Reddit threads, blog posts, and student reviews
+    ingest.py            are cleaned, chunked, and stored once at startup
+    │
+    ▼
+[2] RETRIEVE        ──► The query is embedded and matched against stored chunks
+    retriever.py         using semantic similarity search in ChromaDB
+    │
+    ▼
+[3] GENERATE        ──► Retrieved chunks are passed as context to an LLM,
+    generator.py         which generates a grounded answer with citations
+    │
+    ▼
+[4] UI              ──► A Gradio chat interface allows users to ask
+    app.py              questions about the MSCSO and MSDSO programs
+```
+
+**Tools Used**
+
+* **Ingestion:** Python, LangChain document loaders
+* **Chunking:** Structure-aware chunking (Reddit comments and blog sections)
+* **Embeddings:** `all-MiniLM-L6-v2`
+* **Vector Store:** ChromaDB
+* **Retrieval:** Similarity search (`top-k = 3`)
+* **Generation:** OpenAI GPT model
+* **UI:** Gradio
+
+
+
+
 
 ---
 
