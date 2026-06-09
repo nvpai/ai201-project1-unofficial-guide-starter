@@ -15,6 +15,7 @@
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
 My system covers student reviews and experiences of UT Austin's Online Master's programs, specifically the Master of Science in Computer Science Online (MSCSO) and Master of Science in Data Science Online (MSDSO). It focuses on student-generated insights about coursework, workload, instructor quality, program flexibility, difficulty, and career outcomes gathered from Reddit discussions, blogs, and other online communities.
 Official program websites provide information about admissions, degree requirements, and course offerings, but they do not reflect students' real experiences with workload, course difficulty, instructor quality, time commitment, and career outcomes.
+
 ---
 
 ## Document Sources
@@ -66,6 +67,7 @@ Each document begins with a metadata header (`title:`, `source:`, `url:`, `progr
 
 **Final chunk count:**
 53 chunks across 10 documents (within the healthy 50–2,000 range).
+
 ---
 
 ## Embedding Model
