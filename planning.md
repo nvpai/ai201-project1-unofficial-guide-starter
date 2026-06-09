@@ -256,7 +256,7 @@ Response with Source Citations
 **Milestone 5 — Generation and interface:**
 
 - *Tool:* Claude (Claude Code).
-- *Input I'll give it:* My **Retrieval Approach** + **Architecture** sections
+- *Input I'll give it:* My **Evaluation Plan** + **Architecture** sections
   (Groq `llama-3.3-70b-versatile`, Gradio UI) and the list of chunk dicts
   returned by `retrieve()`.
 - *What I expect it to produce:* A `generate_response()` that formats retrieved
