@@ -1,0 +1,61 @@
+Title: Questions about newly admitted candidate to UT Austin MSCSO
+Source: Reddit - r/MSCSO
+URL: https://www.reddit.com/r/MSCSO/comments/1ss1oed/questions_about_newly_admitted_candidate_to_ut/
+program: MSCSO
+
+
+
+Original Post:
+
+Questions about newly admitted candidate to UT Austin MSCSO
+
+I graduated from in May 2025 with a BS in CS. I started working full time as a Software Engineer last summer at a pretty well known networking company. I also got into the GTech OMSCS. I had a few questions before I accept the offer.
+
+Since it is harder to get into the UT Austin program, is it relatively easier to graduate?
+
+
+
+How is the course workload overall and is it hard to get the courses I want?
+
+
+
+I keep hearing that the courses are very theory heavy. Do you think that would compliment what I keep doing in the industry?
+
+
+
+Is it possible to finish the program sooner if I want to max out a semester after taking a leave from my job ( kind of going full time for that time being)
+
+
+
+
+
+Comment 1:
+User A:
+
+
+
+UT publishes grade distributions. 90% got B- or better.
+
+
+
+Not all courses are offered every term (Fall, Summer and Spring), but there is no cap for class size. Unlike GT OMSCS, you can always get the course you want. See MSCS Hub for workloads https://mscshub.com
+
+
+
+Theory class helps you know why things work certain ways. It depends on how you see it. Theory class is not always harder; application class can be tedious.
+
+
+
+I think you can take up to 5 courses per semester without additional approval. Summer is shorter, roughly 12 weeks.
+
+It takes time to absorb the materials, unless you just want a rubber stamped diploma.
+
+
+
+Comment 2:
+
+User B:
+
+
+
+Yes. Just make your plan for 10 classes and schedule them according to the semesters they are offered. If you take ML, DL, ADL, RL in the long semesters, you will likely only have ADGM left in the summer to take. Look at MSCSHUB.com on the courses tab and hover your cursor over the last column. It will give you the historical semesters they were offered at.

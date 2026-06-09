@@ -22,19 +22,16 @@ This type of information is useful because students considering these programs o
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | Medium (Blog)| Student's blog on his journey with UTAustin's MSCSO program  | https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6|
-
-| 2 | Student Personal Blog | Student review on UT Austin MSDS Online program| https://modalshift.co/msdso-review/|
-| 3 | Student Personal Blog | Experience of a master’s in computer science (online) at UT Austin
- | https://921kiyo.com/ut-austin-cs-online/ |
-| 4 | Reddit - r/MSCSO | UT Austin MS-DS with a Full-Time Job?  | https://www.reddit.com/r/MSCSO/comments/1t15ncr/ut_austin_msds_with_a_fulltime_job/ |
-| 5 | Reddit - r/MSCSO  | Fail a course or final exam, do you have to repay for the whole class?| https://www.reddit.com/r/MSCSO/comments/1ttz0oq/if_you_fail_a_course_or_final_exam_do_you_have_to/|
-| 6 | Reddit - r/MSCSO | What is your typically weekly workload?
-Reddit| https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/ |
+| 1 | Medium (Blog) | Student's blog on his journey with UT Austin's MSCSO program | https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6 |
+| 2 | Student Personal Blog | Student review on UT Austin MSDS Online program | https://modalshift.co/msdso-review/ |
+| 3 | Student Personal Blog | Experience of a master's in computer science (online) at UT Austin | https://921kiyo.com/ut-austin-cs-online/ |
+| 4 | Reddit - r/MSCSO | UT Austin MS-DS with a Full-Time Job? | https://www.reddit.com/r/MSCSO/comments/1t15ncr/ut_austin_msds_with_a_fulltime_job/ |
+| 5 | Reddit - r/MSCSO | Fail a course or final exam, do you have to repay for the whole class? | https://www.reddit.com/r/MSCSO/comments/1ttz0oq/if_you_fail_a_course_or_final_exam_do_you_have_to/ |
+| 6 | Reddit - r/MSCSO | What is your typically weekly workload? | https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/ |
 | 7 | Reddit - r/MSCSO | Questions about newly admitted candidate to UT Austin MSCSO | https://www.reddit.com/r/MSCSO/comments/1ss1oed/questions_about_newly_admitted_candidate_to_ut/ |
-| 8 | Reddit - r/MSCSO  | Retaking course opinions | https://www.reddit.com/r/MSCSO/comments/1shxv1i/retaking_course_opinions/ |
-| 9 | Reddit - r/MSCSO | Grading Breakdown & Exam Proctoring  | https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/|
-| 10 | Reddit - r/MSCSO | Possible to finish the course in 1.5 years? | https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/|
+| 8 | Reddit - r/MSCSO | Retaking course opinions | https://www.reddit.com/r/MSCSO/comments/1shxv1i/retaking_course_opinions/ |
+| 9 | Reddit - r/MSCSO | Grading Breakdown & Exam Proctoring | https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/ |
+| 10 | Reddit - r/MSCSO | Possible to finish the course in 1.5 years? | https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/ |
 
 ---
 
@@ -121,9 +118,31 @@ If I were deploying this system for real users and cost was not a constraint, I 
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. **Inconsistent or oversized chunks.** My sources have very different shapes —
+   long-form blog posts with multi-paragraph sections versus short Reddit
+   comments — so a naive fixed-size splitter would produce wildly inconsistent
+   chunks: some blog paragraphs run well over 256 tokens while some Reddit
+   replies are a single sentence. Oversized chunks are an especially silent
+   failure here, because my embedding model `all-MiniLM-L6-v2` truncates
+   anything past 256 tokens, so the tail of a long chunk would never influence
+   retrieval even though it's stored. *Mitigation:* I use a structure-aware
+   splitter (Reddit → post + each comment, blogs → paragraphs), cap every chunk
+   at ~256 tokens, and sliding-window split anything longer. The `python
+   ingest.py` inspection step prints per-document counts and token-size stats
+   (min/avg/max) so I can confirm no chunk exceeds the limit before embedding.
 
-2.
+2. **Retrieving the wrong chunk (off-topic or adjacent-topic).** Because the
+   corpus is full of closely related student discussions, the embedding model
+   can rank a topically *adjacent* chunk above the one that actually answers the
+   question. I saw exactly this in testing: for "does retaking a course replace
+   the grade?", the top hit was the *"fail a course / do you have to repay?"*
+   thread (`reddit5.txt`) rather than the correct *"retaking course opinions"*
+   thread (`reddit8.txt`), which came second. A short, context-poor comment is
+   also hard to match, which is why I prepend each Reddit thread's title to its
+   chunks. *Mitigation:* I retrieve top-k = 3 (not 1) so the correct chunk is
+   still in the context even when it isn't ranked first, and I check cosine
+   distances (<0.5 = strong match) during the retrieval smoke test to catch
+   weak or off-topic results before they reach the LLM.
 
 ---
 
@@ -134,12 +153,9 @@ If I were deploying this system for real users and cost was not a constraint, I 
      Label each stage with the tool or library you're using.
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
-## Architecture
-    
+
 
  The UT Austin Online Master's Guide is a RAG (Retrieval-Augmented Generation) pipeline with five components:
-
-## Architecture
 
 ```text
 User Query
@@ -206,6 +222,50 @@ Response with Source Citations
 
 **Milestone 3 — Ingestion and chunking:**
 
+- *Tool:* Claude (Claude Code).
+- *Input I gave it:* My **Documents** section (10 `.txt` files of two shapes —
+  blog posts and Reddit threads, each starting with a `title:/source:/url:/program:`
+  header), my **Chunking Strategy** section (structure-aware, ~256-token cap,
+  50 overlap), and the **Architecture** diagram so it understood that chunks
+  feed embedding next.
+- *What I expect it to produce:* A `load_documents()` that reads and cleans each
+  file and parses the header into metadata, plus a `chunk_document()` that
+  splits Reddit threads into post + individual comments and blog posts by
+  paragraph, caps chunks at ~256 tokens, and attaches source metadata to each
+  chunk.
+- *How I'll verify it matches my spec:* Run `python ingest.py` and read the 5
+  printed sample chunks + token-size stats — confirm chunks are self-contained,
+  no chunk exceeds 256 tokens, no HTML artifacts or empty fragments, and the
+  total count is in the 50–2,000 range.
+
 **Milestone 4 — Embedding and retrieval:**
 
+- *Tool:* Claude (Claude Code).
+- *Input I gave it:* My **Retrieval Approach** section (`all-MiniLM-L6-v2`,
+  top-k = 3), the chunk dicts produced by `ingest.py`, and the requirement to
+  store source metadata for attribution.
+- *What I expect it to produce:* An `embed_and_store()` that embeds chunks with
+  `all-MiniLM-L6-v2` and stores them in ChromaDB (cosine space) with
+  source/title/program/url/position metadata, and a `retrieve(query)` that
+  returns the top-k chunks with their distances and source info.
+- *How I'll verify it matches my spec:* Run `python retriever.py` to embed all
+  53 chunks and query 3 of my evaluation questions — confirm the top result for
+  each is on-topic, comes from the correct source file, and has a cosine
+  distance below 0.5.
+
 **Milestone 5 — Generation and interface:**
+
+- *Tool:* Claude (Claude Code).
+- *Input I'll give it:* My **Evaluation Plan** + **Architecture** sections
+  (Groq `llama-3.3-70b-versatile`, Gradio UI) and the list of chunk dicts
+  returned by `retrieve()`.
+- *What I expect it to produce:* A `generate_response()` that formats retrieved
+  chunks into a context block, sends a **grounding** system prompt instructing
+  the model to answer *only* from the provided context and to say so when the
+  answer isn't present, cites the source for each claim, and a Gradio `app.py`
+  wired to the retrieve → generate flow.
+- *How I'll verify it matches my spec:* Run all 5 evaluation questions through
+  the app and check the answers against my expected answers; deliberately ask an
+  off-domain question (e.g. "What's the weather in Austin?") to confirm the
+  model refuses instead of hallucinating, and confirm each answer surfaces its
+  source.
