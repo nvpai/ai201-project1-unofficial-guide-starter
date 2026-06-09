@@ -70,8 +70,10 @@ I used a **structure-aware** approach (implemented in `ingest.py`):
 This preserves complete thoughts and student experiences, producing more
 meaningful chunks than a blind fixed-size split.
 
-**Final chunk count:** 53 chunks across 10 documents (within the healthy
+**Final chunk count:** 
+53 chunks across 10 documents (within the healthy
 50–2000 range; per-document and token-size stats printed by `python ingest.py`).
+
 ---
 
 ## Retrieval Approach
@@ -93,6 +95,7 @@ I will use top 3 most relevant chunks for each query, which provides sufficient 
 
 **Production tradeoff reflection:**
 If I were deploying this system for real users and cost was not a constraint, I would prioritize retrieval accuracy over model size. Since the corpus consists of English-language student reviews, blogs, and Reddit discussions, multilingual support would be less important than accurately capturing the meaning of long-form student experiences. I would consider larger embedding models such as OpenAI's text-embedding-3-large, which may provide better semantic understanding and retrieval quality. The tradeoff would be higher latency and computational requirements, but these costs could be justified by more accurate and relevant search results.
+
 ---
 
 ## Evaluation Plan
