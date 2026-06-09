@@ -46,17 +46,35 @@ Reddit| https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_w
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
 **Chunk size:**
-500 token. Student discussion text is semantically dense — a single review is
-often a paragraph, which fits comfortably in this range. Going smaller
-would fragment individual review; going larger would merge unrelated comments
-into one chunk, making retrieval less precise.
-**Overlap:**
-50 , The overlap helps preserve context when important information spans multiple chunks. Since many chunks are already self contained will be using 50 tokens for overlap
-**Reasoning:**
-<!-- I will use a chunk size of 500 tokens with an overlap of 100 tokens. This size is large enough to capture complete thoughts about topics such as workload, course quality, and student experiences, while remaining small enough for accurate retrieval. -->
+~256 tokens (max). I originally planned 500 tokens, but the embedding model
+`all-MiniLM-L6-v2` truncates any input longer than **256 tokens**, so a
+500-token chunk would only be half-"seen" during similarity search. I lowered
+the cap to 256 tokens so the whole chunk influences retrieval. Student
+discussion text is dense — a single Reddit comment or blog paragraph usually
+fits well under this limit (final corpus: avg ~192 tokens/chunk).
 
-I am planning to use structure aware chunking approach. blog posts were split by section hedding , while reddit threads were split into original post and individaul comment, this preserves complete thoughts and student experiences, resulting in more meaningful chunks 
-For longer sections, a maximum chunk size of approximately 500 tokens was used with a 100-token overlap to preserve context.
+**Overlap:**
+50 tokens (~20%). Because the chunker splits on natural boundaries
+(comments, paragraphs), most chunks are already self-contained and overlap
+only matters when a long passage has to be window-split. 50 tokens preserves
+context across those cuts without heavily duplicating content.
+
+**Reasoning:**
+I used a **structure-aware** approach (implemented in `ingest.py`):
+- **Reddit threads** are split into the original post and each individual
+  comment, and the thread title is prepended to every chunk so a short reply
+  ("Yes, but plan carefully") is still understandable on its own.
+- **Blog posts** are split on paragraph boundaries and greedily packed up to
+  the token budget.
+- Any single segment longer than 256 tokens is sliding-window split using the
+  real `all-MiniLM-L6-v2` tokenizer's **character offsets** (so original casing
+  and spacing are preserved, not lowercased wordpieces).
+
+This preserves complete thoughts and student experiences, producing more
+meaningful chunks than a blind fixed-size split.
+
+**Final chunk count:** 53 chunks across 10 documents (within the healthy
+50–2000 range; per-document and token-size stats printed by `python ingest.py`).
 ---
 
 ## Retrieval Approach
@@ -133,8 +151,9 @@ User Query
     │
     ▼
 [2] CHUNKING
-    LangChain RecursiveCharacterTextSplitter
-    (Structure-aware chunking, 500 tokens, 100 overlap)
+    Structure-aware splitter (ingest.py)
+    (Reddit: post + each comment; Blog: paragraphs)
+    (~256 tokens max, 50 overlap — capped to embedder limit)
     │
     ▼
 [3] EMBEDDING + VECTOR STORE
@@ -159,8 +178,8 @@ Response with Source Citations
 
 **Tools Used**
 
-* **Ingestion:** Python, LangChain document loaders
-* **Chunking:** Structure-aware chunking (Reddit comments and blog sections)
+* **Ingestion:** Python (plain-text loader + header/metadata parsing in `ingest.py`)
+* **Chunking:** Structure-aware (Reddit comments and blog paragraphs), ~256-token cap, 50 overlap
 * **Embeddings:** `all-MiniLM-L6-v2`
 * **Vector Store:** ChromaDB
 * **Retrieval:** Similarity search (`top-k = 3`)
