@@ -1,0 +1,138 @@
+title: Journey with UT Austin's MCSO program
+source_type: blog
+author: Sudharsan Balajee
+url: https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6
+program: MSCSO
+
+Introduction
+
+When I first came across the option of pursuing an online part-time Master’s degree course , I was worried about many things around it.
+
+Would the degree hold the same value as a full-time on-campus one?
+
+Would I be able to maintain my work-study-life balance?!
+
+Would the online program be beneficial in terms of knowledge acquired and skills gained?
+
+After some research, I decided to take this unconventional route (I guess not anymore!) and now I realize it was absolutely the right decision to take.
+In this article, I would like to address those of you readers who are seeking clarity on pursuing MS online, and to walk you through my journey so far. Let’s go!
+
+Step 1 : Why MS Online?
+
+You need to have a strong reason for choosing this mode. I had two significant ones.
+The exposure I was receiving through my full-time job at ValueLabs was incredible and I didn’t want to take a break from that.
+Getting a Master’s degree from a reputed university without having to leave India seemed excellent to me, since it can enhance my profile in the industry.
+If you have any plans of moving abroad for job opportunities, then pursuing your MS on-campus from that country is the better way to go!
+Analyse and understand whether this route will meet your goals.
+
+Step 2 : Research
+Having decided on the online route, I started looking at various options. Although there were universities in India which provided such programs, they did not align well with my expectations and goals.
+I was pleasantly surprised to find some of the top universities in the US providing such programs at an affordable price (for Indians, definitely).
+
+The two universities I applied to were:
+
+1:University of Texas at Austin
+
+2:Georgia Institute of Technology
+You can also explore UIUC, ASU and UPenn programs, if they meet your criteria.
+I began to contact some students from these programs over LinkedIn to understand how it all worked. Reddit was a great source of information too and both these programs have a very active reddit community!
+https://www.reddit.com/r/MSCSO/ — UT Austin
+https://www.reddit.com/r/OMSCS/ — Georgia Tech
+
+Here are some of the pros and cons I discovered about pursuing MS Online (specifically at UT Austin).
+
+Pros:
+You get the degree without leaving your job or your country
+The courses offered are almost same as the full-time ones in-terms of content and quality.
+The final degree certificate you are awarded is the same as the MS on-campus program (However your transcript might contain the code WB to depict that the courses were taken online).
+The exams are online and open for a range of days, providing flexibility.
+Office hours are conducted multiple times in a week at different time zones, for you to connect and solve queries.
+The professors and Teaching Assistants are active on Piazza and solve our queries within a day. You have the official Slack space, active with a lot of channels for different courses and topics
+You earn your MS degree from a reputed university at a very affordable price
+
+Cons:
+It can get very hectic unless you efficiently balance your work and studies
+Connecting with your fellow classmates is not always smooth since the interaction is entirely virtual.
+The lecture videos are uploaded onto a Web platform (like EdX). So if you are not a video-person, this can get tiring.
+The office hours are usually conducted by Teaching Assistants, and not the professors.
+The major takeaways for me from this research phase were
+It’s not a cake walk, for sure! Time management is critical as you have a full-time job too. However, it’s well manageable if you are organized and disciplined .
+It is extremely important to understand the fact that this is a Master’s degree and not just a bunch of online courses.
+
+
+Step 3 : The Applications
+The application process for the online programs are quite similar to the on-campus ones. There will be an application fee around $75–$90.
+
+Here are the requirements:
+A Bachelor’s degree (not necessarily CS based)
+GRE score — at the time of my application during the pandemic, I had the option to waive it off. Do check the current status of the waivers.
+TOEFL/IELTS — for English proficiency if you are from a Non-English country. (I took the TOEFL test and scored 115)
+Statement of Purpose — the most important item in my opinion.
+3 Letters of Recommendation (Georgia Tech accepts 2 as well) — I gave two academic and one work LOR.
+Resume/CV — academic oriented ones are recommended.
+
+I would like to mention some “must do” actions for your application:
+Research about the range of GRE scores being accepted. UT Austin has an official admission statistics page with all the data. Reddit (Admissions thread posts) can be a great source of information for this too.
+Get your SOP reviewed by 3–4 people. Ensure you answer some of the key questions like ‘’Why MS”, “Why CS” and “What’s your plan after MS”.
+
+Make sure you reach out to your teachers for LOR well in advance (at least by a month) as they are busy and can take time to draft and submit.
+I had applied around February for the Fall’21 term, and I received acceptance from both the universities sometime around April! Woo-hoo!
+After further research, I decided to go with UT Austin!
+Although Georgia Tech has a wide variety of courses (>40), sometimes you don’t get the courses you want due to the high number of students in the program.
+UT Austin had lesser, but quite interesting courses. And so far, you get the courses you want to take for the semester without any “classroom full” issues.
+The program and syllabus of UT Austin seemed new and rigorous, and the environment seemed challenging and exciting.
+Once accepted, I had to post my Official Transcript document to the university in order to be eligible for the course registration. I would suggest getting this document ready early during the application process to avoid any delay later.
+
+Let’s look at some of the frequently asked topics regarding the program.
+
+Program Overview:
+The program requires you to finish 10 courses in total.
+You can take as long as 6 years to finish the program.
+Currently there are 16 courses, and they are constantly adding a course every semester. (Refer to https://www.cs.utexas.edu/graduate-program/masters-program/online-option/courses)
+The courses and exams are provided over EdX and Canvas platform.
+There is a community handled site that covers the reviews of the courses, and is very useful during the course selection. Refer to https://mscshub.com/
+
+Exams, Assignments and Projects:
+Some courses can be entirely Project based — which means your final grade is entirely dependent on your project scores. For example, the course ‘Parallel Systems’ has 5 projects where each one constitutes 20% of your final grade.
+Most courses are a mixture of Assignments and Exams. Usually there are two exams — Mid Term and Final exam. There can be weekly quizzes too for some courses.
+The exams are a mix of MCQs and Descriptive questions. Few of them are proctored and few of them rely on honor code.
+Assignments are usually coding problems.
+Some of the assignments are peer graded. So you will have to take your time every week to grade 3–5 assignments. The average of 5 grades is considered. You can always contact the TA through Piazza if you find any discrepancies.
+Few courses provide you with a “Codio” environment to run and test your codes on the cloud.
+
+Fees:
+The UT Austin program costs $1000 per course, summing up to a total of $10000.
+Moreover, if you are an international student, you have to pay $125 per semester as the international fee (Was introduced since Fall’21).
+On the other hand, Georgia Tech costs $540 per course, summing up to $5400. (Yup, much cheaper!)
+
+Jobs:
+I am yet to understand this aspect of the program fully, so here is the information I have gathered from others.
+MCSO students can use the ‘Handshake’ app to participate in the Career Fairs held around the year.
+Additionally, the official Slack group has the #jobs channels to discuss opportunities and referrals.
+
+
+Time Management:
+Depending on its difficulty, a course’s workload can be anywhere between 8 to 20 hours per week.
+I would recommend starting with a single course in your first semester, so that you can assess your time management abilities and learn work-study-life balance. Later you can start taking two courses at a time, since that way you can finish your program much faster.
+For a person with a full-time job, taking more than two courses a semester is not recommended!
+When I take two courses in a semester, I try to choose an easy one and a medium one — so that I don’t exceed 20–25 hours of workload per week.
+The MSCSHub (https://mscshub.com/) contains the details about each course’s difficulty, time taken and feedback submitted by the students.
+
+
+My experience so far!
+
+The list of courses I have taken so far are:
+Parallel Systems (Fall’21)
+Advanced Operating System (Spring’22)
+Online Learning and Optimization (Spring’22)
+Android Programming (Ongoing, Fall’22)
+Reinforcement Learning (Ongoing, Fall’22)
+
+
+I started with the most difficult rated course of the program — Parallel Systems! To be honest, the first month was overwhelming. The approach to the assignments I had to work on were very different from what I had faced during my undergrad.
+
+But soon enough, I was able to adapt to the environment and approach the coursework in the right way. Moreover, it took a month to understand how I can efficiently manage my work and studies.
+
+As I have mentioned earlier, the courses are nothing like the regular online courses you will find over EdX or Coursera. They are intense, and the assignments are so well designed that they make you think hard, discuss with your classmates, and apply the concepts you learnt in the best way you can.
+
+I loved Parallel Systems. In fact, it has been my favorite course so far. If you are a SWE, you will enjoy coding the projects in it.

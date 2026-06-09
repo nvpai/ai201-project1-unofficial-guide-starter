@@ -1,0 +1,36 @@
+Title: Grading Breakdown & Exam Proctoring
+Source: Reddit - r/MSCSO
+URL: https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/
+program: MSDSO
+
+
+
+Original Post:
+
+MSDSO Course Format Question — Grading Breakdown & Exam Proctoring
+
+Hi everyone! I'm a prospective MSDSO applicant trying to get a better sense of how courses are structured.
+
+For those currently in the program (or alumni), how are classes typically split in terms of grading components—like exams vs assignments vs projects? Is it usually more project-based, exam-heavy, or a mix?
+
+Also, are exams proctored? If so, how does that work (e.g., live online proctoring, recorded sessions, testing centers, etc.)? Or are they mostly honor-code based?
+
+I’d really appreciate hearing about your experiences across different courses since I imagine it varies.
+
+Thanks in advance!
+
+
+
+Comment 1:
+User A:
+
+The exact split varies wildly by class. Some classes like DL will be quizzes and auto graded programming assignments. Others like ML will be proof writing and theory/derivations split across homework and exams, with a little programming mixed in. Proctoring also varies - DL is unproctored and ML is proctored by recording (not live) for exams only. Some courses have group projects, some have multiple choice exams instead of theory, but as far as I know none do live proctoring or in person exams. You’ll just have to check on a per course basis for exact details.
+
+
+
+Comment 2:
+
+User B:
+
+You are allowed to choose between LaTeX or handwritten submission for theory homework and exams, but most people seem to do handwritten.
+

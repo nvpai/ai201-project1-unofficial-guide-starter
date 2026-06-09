@@ -1,0 +1,24 @@
+Title: What is your typically weekly workload?
+Source: Reddit - r/MSCSO
+URL: https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/
+program: MSCSO
+
+
+
+Original Post:
+
+What is your typically weekly workload?
+
+I recently got admitted to MSCSO and OMSCS. My impression is that MSCSO would have a higher workload due to the theoretical-focused structure, yet most people on Reddit are saying MSCSO actually have a lower workload than OMSCS?
+
+Why did you ultimately decide to enroll in MSCSO over other programs?
+
+I’m looking to go into AI/ML consulting and data science, rather than heavy software engineering. Since I don’t come from a CS background, I’m trying to understand whether a program like MSCSO would give me enough foundational CS compared to OMSCS, which admits more people with different backgrounds.
+
+
+
+Comment 1:
+User A:
+Take a look at the average times on MSCSHub vs OMSCentral. Obviously how much time something takes you depends on your prereqs, your brain power, etc, and what courses you choose, but it's a good guideline.
+
+For example, I did AOS + DL this semester and my total workload for both was <10 hours per week. My coworker did GIOS and DL and found them much more work (15-20 hours each, I think). 

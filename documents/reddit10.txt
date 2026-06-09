@@ -1,0 +1,89 @@
+Title: Possible to finish the course in 1.5 years?
+Source: Reddit - r/MSCSO
+URL: https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/
+program: MSCSO
+
+
+
+Original Post:
+
+Possible to finish in 1.5 years?
+
+Recent MSCSO Admit for fall 2026. Is 2 classes per semester (including summer) realistic?
+
+
+
+Comment 1:
+User A:
+
+Yes, but need careful course planning.
+
+Not all courses are offered in the summer.
+
+
+
+Some courses are offered year round.
+
+
+
+some courses are offered in fall or spring term only.
+
+
+
+Some are easy while the others are demanding. Some pave the foundations for the others.
+
+
+
+Do you work full time? If so, how many hours a week do you spend on working?
+
+
+
+Do you have family obligations?
+
+
+
+What is your goal? Need the diploma asap or plan to retain the knowledge forever?
+
+
+
+If you are US citizen or PR, do you want to become a TA to enforce the learning?
+
+
+
+UT still holds the same academic standards for online part time students. This means you need to maintain 3.0 GPA every term to avoid probation and to graduate.
+
+
+
+Comment 2:
+
+User B:
+
+Yes, I work full time and have family obligations. I am fortunate enough to have time during the workdays to study / do training as well.
+
+My goal is to get it done as quickly as possible but there are a few classes I really am looking forward to.
+
+
+
+Comment  3:
+
+User C:
+
+Two in the summer could be hard. 2/2/1/2/2/1 is the default schedule for those without families or other outsized time commitments and that already have experience (CS degree). Just be careful to check the courses typically available in the summer to not accidentally end up without a summer option. 
+
+Do you intend to do a thesis? That changes the schedule a bit.
+
+
+
+Comment 4:
+
+User D:
+
+I probably wouldn't do two in the summer, but with well-chosen course combinations I think 3 in one or two long semesters would be doable (e.g. taking two of CSML/DL/ADL/PSRUU plus some other course) while working full-time.
+
+
+
+Comment 5:
+
+User E:
+
+You will want to pair theory/difficult courses with easy/application ones. Do note some easy one may have time consuming assignments.
