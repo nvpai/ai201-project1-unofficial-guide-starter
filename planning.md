@@ -22,19 +22,16 @@ This type of information is useful because students considering these programs o
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | Medium (Blog)| Student's blog on his journey with UTAustin's MSCSO program  | https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6|
-
-| 2 | Student Personal Blog | Student review on UT Austin MSDS Online program| https://modalshift.co/msdso-review/|
-| 3 | Student Personal Blog | Experience of a master’s in computer science (online) at UT Austin
- | https://921kiyo.com/ut-austin-cs-online/ |
-| 4 | Reddit - r/MSCSO | UT Austin MS-DS with a Full-Time Job?  | https://www.reddit.com/r/MSCSO/comments/1t15ncr/ut_austin_msds_with_a_fulltime_job/ |
-| 5 | Reddit - r/MSCSO  | Fail a course or final exam, do you have to repay for the whole class?| https://www.reddit.com/r/MSCSO/comments/1ttz0oq/if_you_fail_a_course_or_final_exam_do_you_have_to/|
-| 6 | Reddit - r/MSCSO | What is your typically weekly workload?
-Reddit| https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/ |
+| 1 | Medium (Blog) | Student's blog on his journey with UT Austin's MSCSO program | https://medium.com/@sudz24/my-journey-with-ut-austins-mcso-a21d70a150c6 |
+| 2 | Student Personal Blog | Student review on UT Austin MSDS Online program | https://modalshift.co/msdso-review/ |
+| 3 | Student Personal Blog | Experience of a master's in computer science (online) at UT Austin | https://921kiyo.com/ut-austin-cs-online/ |
+| 4 | Reddit - r/MSCSO | UT Austin MS-DS with a Full-Time Job? | https://www.reddit.com/r/MSCSO/comments/1t15ncr/ut_austin_msds_with_a_fulltime_job/ |
+| 5 | Reddit - r/MSCSO | Fail a course or final exam, do you have to repay for the whole class? | https://www.reddit.com/r/MSCSO/comments/1ttz0oq/if_you_fail_a_course_or_final_exam_do_you_have_to/ |
+| 6 | Reddit - r/MSCSO | What is your typically weekly workload? | https://www.reddit.com/r/MSCSO/comments/1svkt9g/what_is_your_typically_weekly_workload/ |
 | 7 | Reddit - r/MSCSO | Questions about newly admitted candidate to UT Austin MSCSO | https://www.reddit.com/r/MSCSO/comments/1ss1oed/questions_about_newly_admitted_candidate_to_ut/ |
-| 8 | Reddit - r/MSCSO  | Retaking course opinions | https://www.reddit.com/r/MSCSO/comments/1shxv1i/retaking_course_opinions/ |
-| 9 | Reddit - r/MSCSO | Grading Breakdown & Exam Proctoring  | https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/|
-| 10 | Reddit - r/MSCSO | Possible to finish the course in 1.5 years? | https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/|
+| 8 | Reddit - r/MSCSO | Retaking course opinions | https://www.reddit.com/r/MSCSO/comments/1shxv1i/retaking_course_opinions/ |
+| 9 | Reddit - r/MSCSO | Grading Breakdown & Exam Proctoring | https://www.reddit.com/r/MSCSO/comments/1sdruu2/msdso_course_format_question_grading_breakdown/ |
+| 10 | Reddit - r/MSCSO | Possible to finish the course in 1.5 years? | https://www.reddit.com/r/MSCSO/comments/1s62mx7/possible_to_finish_in_15_years/ |
 
 ---
 
